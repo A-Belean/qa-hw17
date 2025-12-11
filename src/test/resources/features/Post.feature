@@ -1,3 +1,4 @@
+@smoke @register
 Feature: Înregistrare Utilizator
 
   Scenario: Înregistrare cu succes
