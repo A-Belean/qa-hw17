@@ -17,8 +17,8 @@ public class CommonSteps {
         loginPage.openPage();
 
         // Folosim un cont de test valid (hardcodat sau din config)
-        loginPage.login("george.datcu@hotmail.com", "qazXSW@13");
+        loginPage.login("adibelean6@gmail.com", "Cursqa01@");
 
-        System.out.println("--- Background: Login complet. Începe testul de Search ---");
+        System.out.println("--- Background: Login complet. Începe testul ---");
     }
 }

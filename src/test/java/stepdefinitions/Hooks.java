@@ -14,6 +14,7 @@ public class Hooks {
         Configuration.browser = "chrome";
         Configuration.baseUrl = "https://test.hapifyme.com";
         Configuration.browserSize = "1920x1080";
+        Configuration.holdBrowserOpen = true;
 
         System.out.println("--- Start Scenariu ---");
     }

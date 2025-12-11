@@ -1,26 +1,25 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
+import io.cucumber.java.en.When;
+import pages.ProfilePage;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
+public class ProfileSteps {
 
-public class SearchSteps {
+    private ProfilePage profilePage = new ProfilePage();
+    private String lastSearchedUser;
 
     @When("utilizatorul caută {string} în bara de navigare")
-    public void searchUser(String query) {
-        // Locator pentru bara de search (din header.php/style.css)
-        // De obicei este input[name='q'] sau clasa .search_text_input
-        $(By.cssSelector("input[name='q']")).setValue(query);
+    public void searchBar(String query) {
+        lastSearchedUser = query;
+        profilePage.searchAndNavigateToResultsPage(query);
     }
-
     @Then("ar trebui să vadă o listă de rezultate care conține {string}")
-    public void verifyResults(String expectedName) {
-        // Așteptăm ca dropdown-ul de rezultate să apară
-        $(".search_results").shouldBe(visible);
-        // Verificăm textul
-        $(".search_results").shouldHave(text(expectedName));
+    public void searchList(String expectedName) {
+        profilePage.verifyResultsContain(expectedName);
+    }
+    @Then("alege primul utlizator si intra pe profil la el")
+    public void FirstUseropen() {
+        profilePage.selectFirstUserAndGoToProfile(lastSearchedUser);
     }
 }

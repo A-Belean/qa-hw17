@@ -1,13 +1,17 @@
-@smoke @register
-Feature: Înregistrare Utilizator
+@smoke @post
+Feature: Crearea unor postari pe Feed folosind Data Table
+  Ca un utilizator inregistrat
+  Vreau sa creez mai multe postari pe Feed (index.php)
 
-  Scenario: Înregistrare cu succes
-    Given utilizatorul deschide pagina de login "https://test.hapifyme.com/login_register.php"
-    # Formularul de înregistrare este ascuns implicit. Trebuie să facem click pe link-ul "Need an account?".
-    And utilizatorul accesează formularul de înregistrare
-    When completează formularul de înregistrare:
-      | First Name | Last Name | Email          | Password |
-      | Ion        | Popescu   | ion@test.com   | Pass@123 |
-      | Ion        | Ionescu   | jon@test.com   | Pass@321 |
+  Background:
+    Given utilizatorul este logat în aplicație
 
-    Then contul este creat cu succes
+  Scenario: Creez mai multe postari folosind Data Table
+    When Eu creez urmatoarele postari
+      | text                       |
+      | Salut, primele postari!    |
+      | QA ROCKS                   |
+      | Postare automată nr. 3     |
+    Then Postarile trebuie sa apara pe feed
+
+

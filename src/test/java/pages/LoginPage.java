@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.*;
 
 public class LoginPage {
 
@@ -10,7 +11,6 @@ public class LoginPage {
     private By emailInput = By.name("log_email");
     private By passwordInput = By.name("log_password");
     private By loginButton = By.name("login_button");
-    private By registerLink = By.id("signup");
 
     // Metode de acțiune
     public void openPage() {
@@ -22,8 +22,10 @@ public class LoginPage {
         $(passwordInput).setValue(password);
         $(loginButton).click();
     }
-
-    public void navigateToRegister() {
-        $(registerLink).click();
+    public void verifyError(String expectedError) {
+        $("body").shouldHave(text(expectedError)); // <--- aici
+    }
+    public void verifyHomepage() {
+        $(".posts_area").shouldBe(visible); // sau alt element vizibil doar după login
     }
 }
