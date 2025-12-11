@@ -10,3 +10,4 @@ Feature: Căutare utilizatori
     When utilizatorul caută "George" în bara de navigare
     Then ar trebui să vadă o listă de rezultate care conține "George"
     Then alege primul utlizator si intra pe profil la el
+
